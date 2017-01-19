@@ -29,6 +29,7 @@ class Hand(object):
         self.cards = []
 
     def __str__(self):
+
         if self.cards:
             playing_card = ""
             for card in self.cards:
@@ -38,12 +39,14 @@ class Hand(object):
         return playing_card
 
     def clear(self):
+        """A method that clears all cards in the card list object"""
         self.cards = []
 
     def add(self, card):
         self.cards.append(card)
 
     def give(self, card, other_hand):
+        """A method that distribute cards to the anther hand"""
         self.cards.remove(card)
         other_hand.add(card)
 
@@ -57,11 +60,13 @@ class Deck(Hand):
                 self.add(Card(rank, suit))
 
     def shuffle(self):
+        """A method tha shuffle the deck of cards"""
         import random
         random.shuffle(self.cards)
 
-    def deal(self, hands, per_hand=1):
-        for rounds in range(per_hand):
+    def deal(self, hands, card_per_hand=1):
+        """A method that deal the cards to the hand. It accepts the list of hand and cards per hand """
+        for rounds in range(card_per_hand):
             for hand in hands:
                 if self.cards:
                     top_card = self.cards[0]

@@ -95,7 +95,7 @@ class BlackJackDealer(BlackJackHand):
         """ checks to see if the dealer is taking another card"""
         return self.total < 17
 
-    def bust(self):
+    def busted(self):
         """ print out a message if the dealer has been busted in the game"""
         print("{} busted".format(self.name))
 
@@ -161,7 +161,7 @@ class BlackJackGame(object):
             print(self.dealer)
             self.__add_another_card(self.dealer)
             # If the dealer is being busted, everyone wins
-            if self.dealer.bust():
+            if self.dealer.busted():
                 # Because the dealer is being busted, everyone playing the blackjack game wins
                 for player in self.still_playing:
                     player.win()
@@ -192,17 +192,6 @@ def main():
     while play_again != 'n':
         game.play()
         play_again = UserInput.ask_yes_no("Do you want to play again?((Y/N ")
-
-
-class Player(object):
-    """ A player for a game. """
-    # def __init__(self, name, score = 0):
-    #     self.name = name
-    #     self.score = score
-    #
-    # def __str__(self):
-    #     rep = self.name + ":\t" + str(self.score)
-    #     return rep
 
 
 class UserInput(object):
