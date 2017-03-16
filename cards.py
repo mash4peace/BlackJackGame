@@ -1,4 +1,4 @@
-# I got some help doing this game using the book python programming for absolute beginner
+
 class Card(object):
 
     """ A playing card. """
